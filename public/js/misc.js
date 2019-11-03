@@ -41,15 +41,12 @@ fetch('https://api.coinmarketcap.com/v2/ticker/3452/').then(response => {
 if (typeof web3 == 'undefined') {
     var web3 = new Web3()
     web3.setProvider(new Web3.providers.HttpProvider('https://rpc.ether1.org'))
-    $('#ethofsLoginModal').modal('show');
 } else {
     ethofsLogin("");
 }
 
 
 function ethofsLogin(privateKey) {
-    $('#ethofsLoginModal').modal('hide');
-    $('#ethofsRegistrationModal').modal('hide');
     //CREATE ETHER-1 CHAIN CONNECTION AND LOOK FOR EXISTING USER ACCOUNT
     if (privateKey != "") {
         GlobalPrivateKey = privateKey;
@@ -71,7 +68,6 @@ function ethofsLogin(privateKey) {
                 console.error("An error occurred: " + err);
                 outputNoAddressContractTable();
             } else if (accounts.length == 0) {
-                $('#ethofsLoginModal').modal('show');
                 console.log("User is not logged in");
                 document.getElementById("welcome-name").textContent = "Access to Ether-1 Blockchain Not Found - Make Sure You Are Using Metamask or The Ether-1 Browser Extension";
                 document.getElementById("accountaddress").textContent = "Address Not Found";
@@ -110,7 +106,6 @@ function startEthofs() {
                 document.getElementById("welcome-name").textContent = "User Not Found";
                 document.getElementById("accountaddress").textContent = "Address Not Found";
                 console.log("User Not Found");
-                $('#ethofsRegistrationModal').modal('show');
             }
         } else {
             document.getElementById("welcome-name").textContent = "Access to Ether-1 Blockchain Not Found - Make Sure You Are Using Metamask or The Ether-1 Browser Extension";
@@ -138,10 +133,8 @@ function AddNewUser(userName) {
                 web3.eth.sendSignedTransaction(signedTransactionData.rawTransaction, function(error, result) {
                     if (!error) {
                         if (result) {
-                            $('#minedBlockTrackerModal').modal('show');
                             waitForReceipt(result, function(receipt) {
                                 console.log("Transaction Has Been Mined: " + receipt);
-                                $('#minedBlockTrackerModal').modal('hide');
                                 ethofsLogin(GlobalPrivateKey);
                             });
                         } else {
@@ -157,19 +150,15 @@ function AddNewUser(userName) {
             if (!error) {
                 if (result) {
                     document.getElementById("wait").innerHTML = 'Waiting For Add User Confirmation.';
-                    $('#minedBlockTrackerModal').modal('show');
                     waitForReceipt(result, function(receipt) {
                         console.log("Transaction Has Been Mined: " + receipt);
-                        $('#minedBlockTrackerModal').modal('hide');
                         ethofsLogin("");
                     });
                 } else {
                     console.log("There was a problem adding new user");
-                    $('#ethofsLoginModal').modal('show');
                 }
             } else {
                 console.error(error);
-                $('#ethofsLoginModal').modal('show');
             }
         });
     }
@@ -247,10 +236,8 @@ function RemoveContract(hostingAddress, contentHash) {
                 web3.eth.sendSignedTransaction(signedTransactionData.rawTransaction, function(error, result) {
                     if (!error) {
                         if (result) {
-                            $('#minedBlockTrackerModal').modal('show');
                             waitForReceipt(result, function(receipt) {
                                 console.log("Transaction Has Been Mined: " + receipt);
-                                $('#minedBlockTrackerModal').modal('hide');
                                 updateContractTable();
                             });
                         } else {
@@ -269,10 +256,8 @@ function RemoveContract(hostingAddress, contentHash) {
         pinRemoving.methods.RemoveHostingContract(hostingAddress, contentHash).send(tx, function(error, result) {
             if (!error) {
                 if (result) {
-                    $('#minedBlockTrackerModal').modal('show');
                     waitForReceipt(result, function(receipt) {
                         console.log("Transaction Has Been Mined: " + receipt);
-                        $('#minedBlockTrackerModal').modal('hide');
                         updateContractTable();
                     });
                 } else {
@@ -408,7 +393,6 @@ function round(value, decimals) {
 }
 /*************************************************************************************************************/
 function finishUploadModal() {
-    $('#uploadTrackerModal').modal('hide');
     window.stopApplication();
     resetUploadSystem();
     updateContractTable();
@@ -425,7 +409,6 @@ function resetUploadModal() {
 //CHECK FOR PROPAGATED & AVAILABLE DATA ON NETWORK - FINAL VERIFICATION FOR UPLOADED CONTENT
 function checkForUploadedContentAvailability(HostingContractName) {
     document.getElementById("upload-check-button").style.visibility = "hidden";
-    $('#uploadTrackerModal').modal('show');
     document.getElementById("upload-hash").innerHTML = HostingContractName;
     return false;
 }
@@ -535,7 +518,6 @@ function showHostingContractDetails(counter) {
     resetContractExtensionChange();
 
     GlobalHostingContractDetailArray = GlobalHostingContractArray[counter];
-    $('#contractDetailModal').modal('show');
     document.getElementById("contract-detail-name").innerHTML = GlobalHostingContractDetailArray['name'];
     var hashOutputString = "";
     var hostingContractEntry = "";
@@ -619,11 +601,8 @@ function contractExtensionConfirmation() {
                     web3.eth.sendSignedTransaction(signedTransactionData.rawTransaction, function(error, result) {
                         if (!error) {
                             if (result) {
-                                $('#contractDetailModal').modal('hide');
-                                $('#minedBlockTrackerModal').modal('show');
                                 waitForReceipt(result, function(receipt) {
                                     console.log("Transaction Has Been Mined: " + receipt);
-                                    $('#minedBlockTrackerModal').modal('hide');
                                     updateContractTable();
                                 });
                             } else {
@@ -639,11 +618,8 @@ function contractExtensionConfirmation() {
             ethoFSController.methods.ExtendContract(GlobalHostingContractDetailArray['address'], extensionDuration).send(transactionObject, function(error, result) {
                 if (!error) {
                     if (result) {
-                        $('#contractDetailModal').modal('hide');
-                        $('#minedBlockTrackerModal').modal('show');
                         waitForReceipt(result, function(receipt) {
                             console.log("Transaction Has Been Mined: " + receipt);
-                            $('#minedBlockTrackerModal').modal('hide');
                             updateContractTable();
                         });
                     }
