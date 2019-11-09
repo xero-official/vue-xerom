@@ -3,9 +3,7 @@
   <v-app-bar fixed color="#308968" dark app>
     <v-menu right bottom>
       <template v-slot:activator="{ on }">
-        <v-btn icon v-on="on">
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
+          <v-app-bar-nav-icon v-on="on"></v-app-bar-nav-icon>
       </template>
 
       <v-list>

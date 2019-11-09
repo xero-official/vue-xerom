@@ -3,10 +3,10 @@
   <br>
   <v-card class="mx-auto text-center" width="500" outlined>
     <v-card-subtitle style="font-size: 48px; color: #fff">Link Node</v-card-subtitle>
-    <v-card-subtitle style="color: #fff">5,000 XERO</v-card-subtitle>
-    <v-card-subtitle style="color: #fff">RAM: 1GB</v-card-subtitle>
-    <v-card-subtitle style="color: #fff">CPU: Intel/ARM - 1 core minimum.</v-card-subtitle>
-    <v-card-subtitle style="color: #fff">Storage: 16GB HDD/SSD/SD Card.</v-card-subtitle>
+    <v-card-subtitle style="color: #fff">40,000 XERO</v-card-subtitle>
+    <v-card-subtitle style="color: #fff">RAM: 4GB</v-card-subtitle>
+    <v-card-subtitle style="color: #fff">CPU: Intel/ARM - 2 core minimum.</v-card-subtitle>
+    <v-card-subtitle style="color: #fff">Storage: 80GB SSD Card.</v-card-subtitle>
     <v-card-subtitle style="color: #fff">Public static IP address.</v-card-subtitle>
     <br>
   </v-card>
@@ -14,9 +14,8 @@
   <br>
 
   <v-card class="mx-auto text-center" max-width="500" outlined>
-    <v-card-subtitle style="color: #fff">Chain Nodes play a very important part of the XERO ecosystem. Chain nodes run a XERO Geth instance, which means your Chain node helps to verify the legitimacy of transactions. Since the Geth instance is not
-      extremely
-      resource intense the Chain node has a very low resource requirement.</v-card-subtitle>
+    <v-card-subtitle style="color: #fff">Link Nodes run ethoFS, Geth and IPFS binaries. Link Nodes help secure the chain by verifying transactions on the network as well as host content uploaded to the ethoFS network by running an ethoFS and IPFS
+      binary.</v-card-subtitle>
 
 
     <v-card-actions class="justify-center">

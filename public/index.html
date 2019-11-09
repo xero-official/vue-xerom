@@ -5,14 +5,274 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="icon" href="https://ether1.org/images/icon.png">
+  <link rel="icon" href="favicon.ico">
   <title>Xerom - Decentralized by Nature</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
   <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="js/bundle.js"></script>
-  <script src="js/misc.js"></script>
+  <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+  <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+  <script src="https://www.amcharts.com/lib/3/themes/black.js"></script>
+  <script>
+    AmCharts.makeChart("chartdiv2", {
+      "type": "serial",
+      "categoryField": "category",
+      "startDuration": 1,
+      "theme": "black",
+      "categoryAxis": {
+        "gridPosition": "start"
+      },
+      "trendLines": [],
+      "graphs": [{
+        "balloonText": "Circulating [[title]] at [[category]]:[[value]]",
+        "bullet": "round",
+        "id": "AmGraph-1",
+        "title": "XERO Supply",
+        "type": "smoothedLine",
+        "valueField": "column-1"
+      }],
+      "guides": [],
+      "valueAxes": [{
+        "id": "ValueAxis-1",
+        "title": "XERO Supply"
+      }],
+      "allLabels": [],
+      "balloon": {},
+      "legend": {
+        "enabled": true,
+        "useGraphSettings": true
+      },
+      "titles": [{
+        "id": "Title-1",
+        "size": 15,
+        "text": "XERO Circulating Supply"
+      }],
+      "dataProvider": [{
+          "category": "Block 1M",
+          "column-1": "24000000"
+        },
+        {
+          "category": "Block 2M",
+          "column-1": "46000000"
+        },
+        {
+          "category": "Block 3M",
+          "column-1": "68000000"
+        },
+        {
+          "category": "Block 4M",
+          "column-1": "88000000"
+        },
+        {
+          "category": "Block 5M",
+          "column-1": "108000000"
+        },
+        {
+          "category": "Block 6M",
+          "column-1": "128000000"
+        },
+        {
+          "category": "Block 7M",
+          "column-1": "146000000"
+        },
+        {
+          "category": "Block 8M",
+          "column-1": "164000000"
+        },
+        {
+          "category": "Block 9M",
+          "column-1": "180000000"
+        },
+        {
+          "category": "Block 10M",
+          "column-1": "196000000"
+        }
+      ]
+    });
+  </script>
+
+  <script>
+    AmCharts.makeChart("chartdiv", {
+      "type": "serial",
+      "categoryField": "Block",
+      "startDuration": 1,
+      "theme": "black",
+      "categoryAxis": {
+        "gridPosition": "start"
+      },
+      "trendLines": [],
+      "graphs": [{
+          "balloonText": "[[title]] of [[category]]:[[value]] XERO",
+          "bullet": "round",
+          "id": "AmGraph-1",
+          "lineColor": "green",
+          "title": "Miners Reward",
+          "type": "smoothedLine",
+          "valueField": "Miners"
+        },
+        {
+          "balloonText": "[[title]] of [[category]]:[[value]] XERO",
+          "bullet": "square",
+          "fontSize": -3,
+          "id": "AmGraph-2",
+          "lineColor": "#FF0000",
+          "title": "Node Rewards",
+          "type": "smoothedLine",
+          "valueField": "Nodes"
+        },
+        {
+          "dashLength": 1,
+          "fillColors": "#C67777",
+          "fixedColumnWidth": 0,
+          "id": "AmGraph-3",
+          "lineAlpha": 1,
+          "lineColor": "#4C4CE5",
+          "title": "Dev-Fund Rewards",
+          "valueField": "Dev-Fund"
+        }
+      ],
+      "guides": [],
+      "valueAxes": [{
+        "id": "ValueAxis-1",
+        "title": "Block Reward"
+      }],
+      "allLabels": [],
+      "balloon": {},
+      "legend": {
+        "enabled": true,
+        "useGraphSettings": true
+      },
+      "titles": [{
+        "id": "Title-1",
+        "size": 15,
+        "text": "XERO Block Reward Distribution"
+      }],
+      "dataProvider": [{
+          "Dev-Fund": "2",
+          "Block": "Block 1",
+          "Miners": "20",
+          "Nodes": "4"
+        },
+        {
+          "Dev-Fund": "2",
+          "Block": "Block 1M",
+          "Miners": "18",
+          "Nodes": "4"
+        },
+        {
+          "Dev-Fund": "2",
+          "Block": "Block 2M",
+          "Miners": "16",
+          "Nodes": "6"
+        },
+        {
+          "Dev-Fund": "2",
+          "Block": "Block 3M",
+          "Miners": "14",
+          "Nodes": "6"
+        },
+        {
+          "Dev-Fund": "2",
+          "Block": "Block 4M",
+          "Miners": "12",
+          "Nodes": "8"
+        },
+        {
+          "Dev-Fund": "2",
+          "Block": "Block 5M",
+          "Miners": "10",
+          "Nodes": "10"
+        },
+        {
+          "Dev-Fund": "2",
+          "Block": "Block 6M",
+          "Miners": "8",
+          "Nodes": "10"
+        },
+        {
+          "Dev-Fund": "1.5",
+          "Block": "Block 7M",
+          "Miners": "6",
+          "Nodes": "12"
+        },
+        {
+          "Dev-Fund": "1.5",
+          "Block": "Block 8M",
+          "Miners": "4",
+          "Nodes": "12"
+        },
+        {
+          "Dev-Fund": "1.5",
+          "Block": "Block 9M",
+          "Miners": "4",
+          "Nodes": "14"
+        },
+        {
+          "Dev-Fund": "1.5",
+          "Block": "Block 10M",
+          "Miners": "2",
+          "Nodes": "14"
+        }
+      ]
+    });
+  </script>
+
+  <!-- END amCharts javascript code -->
+
+  <style>
+    .tg {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    .tg td {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      padding: 10px 5px;
+      border-style: solid;
+      border-width: 1px;
+      overflow: hidden;
+      word-break: normal;
+      border-color: black;
+    }
+
+    .tg th {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: normal;
+      padding: 10px 5px;
+      border-style: solid;
+      border-width: 1px;
+      overflow: hidden;
+      word-break: normal;
+      border-color: black;
+    }
+
+    .tg .tg-baqh {
+      text-align: center;
+      vertical-align: top
+    }
+
+    .tg .tg-c3ow {
+      border-color: inherit;
+      text-align: center;
+      vertical-align: top
+    }
+
+    .tg .tg-ufv0 {
+      color: #308968;
+      border-color: inherit;
+      text-align: center;
+      vertical-align: top
+    }
+
+    .tg .tg-aay3 {
+      color: #308968;
+      text-align: center;
+      vertical-align: top
+    }
+  </style>
 </head>
 
 <body>
