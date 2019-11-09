@@ -1,4 +1,4 @@
-# ssl-cluster
+# vue-xerom
 
 ## Project setup
 ```
